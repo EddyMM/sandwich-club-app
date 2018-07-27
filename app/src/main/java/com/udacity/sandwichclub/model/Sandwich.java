@@ -73,4 +73,10 @@ public class Sandwich {
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Sandwich(mainName=%s, ingredients=%s)",
+                this.mainName, this.ingredients);
+    }
 }
