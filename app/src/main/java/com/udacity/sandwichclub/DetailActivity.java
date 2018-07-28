@@ -84,21 +84,19 @@ public class DetailActivity extends AppCompatActivity {
             }
         }
 
-        // If no place of origin, show unknown
         String placeOfOrigin = sandwich.getPlaceOfOrigin();
-        placeOfOriginTv.setText(
-                TextUtils.isEmpty(placeOfOrigin) ? getString(R.string.unknown) : placeOfOrigin);
+        if(!TextUtils.isEmpty(placeOfOrigin)) {
+            placeOfOriginTv.setText(placeOfOrigin);
+        }
 
-        // If no description, show not found
         String description = sandwich.getDescription();
-        descriptionTv.setText(
-                TextUtils.isEmpty(description) ? getString(R.string.description_not_found)
-                        : description);
+        if(!TextUtils.isEmpty(description)) {
+            descriptionTv.setText(description);
+        }
 
-        // If no ingredients, show no ingredients found
-        if (sandwich.getIngredients().size() <= 0) {
-            ingredientsTv.setText(getString(R.string.ingredients_not_found));
-        } else {
+        // Populate ingredients
+        if(sandwich.getIngredients().size() > 0) {
+            ingredientsTv.setText("");
             for (String ingredient : sandwich.getIngredients()) {
                 ingredientsTv.append("- " + ingredient + "\n");
             }
